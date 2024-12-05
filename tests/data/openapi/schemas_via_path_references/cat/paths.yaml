@@ -1,0 +1,19 @@
+cat:
+  get:
+    summary: Get a cat
+    responses:
+      200:
+        content:
+          application/json:
+            schema:
+              $ref: './schemas.yaml#/CatDetails'
+cats:
+  get:
+    summary: Get all cats
+    responses:
+      200:
+        content:
+          application/json:
+            schema:
+              $ref: './schemas.yaml#/CatList'
+              

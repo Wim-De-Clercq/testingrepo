@@ -1,0 +1,9 @@
+openapi: 3.1.0
+info:
+  title: "Entity Schemas"
+  version: '1'
+paths: 
+  /cat:
+    $ref: "./cat/paths.yaml#/cat"
+  /cats:
+    $ref: "./cat/paths.yaml#/cats"

@@ -2388,6 +2388,28 @@ def test_main_openapi_reference_same_hierarchy_directory():
             )
 
 
+@freeze_time("2019-07-26")
+def test_main_openapi_schemas_via_path_references():
+    with TemporaryDirectory() as output_dir:
+        with chdir(OPEN_API_DATA_PATH / "schemas_via_path_references"):
+            output_file: Path = Path(output_dir) / "output.py"
+            return_code: Exit = main(
+                [
+                    "--input",
+                    "./openapi.yaml",
+                    "--output",
+                    str(output_file),
+                    "--input-file-type",
+                    "openapi",
+                    "--openapi-scopes",
+                    "paths",
+                ]
+            )
+            assert return_code == Exit.OK
+            output_data = output_file.read_text()
+            print("data is:", output_data)
+
+
 @freeze_time('2019-07-26')
 def test_main_multiple_required_any_of():
     with TemporaryDirectory() as output_dir:
